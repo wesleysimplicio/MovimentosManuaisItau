@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 class="display-5 mt-5">Movimentos Manuais</h1>
+<div class="row">
+    <div class="col-md-6 col-12">
+        <div class="form-group">
+            <label for="mounth">Mês</label>
+            <input id="mounth" name="mounth" type="text" disabled="disabled" class="form-control" />
+        </div>
+    </div>
+    <div class="col-md-6 col-12">
+        <div class="form-group">
+            <label for="year">Ano</label>
+            <input id="year" name="year" type="text" disabled="disabled" class="form-control" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-12">
+        <div class="form-group">
+            <label for="product">Produto</label>
+            <select id="product" name="product" disabled="disabled" class="form-control">
+                <option value="">-- Selecione --</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6 col-12">
+        <div class="form-group">
+            <label for="cosif">Cosif</label>
+            <select id="cosif" name="cosif" disabled="disabled" class="form-control">
+                <option value="">-- Selecione --</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-12">
+        <div class="form-group">
+            <label for="value">Valor</label>
+            <input id="value" name="value" disabled="disabled" type="text" class="form-control" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-12">
+        <div class="form-group">
+            <label for="description">Descrição</label>
+            <textarea id="description" name="description" disabled="disabled" class="form-control"></textarea>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-12">
+        <div class="text-right">
+            <button class="btn">Limpar</button>
+            <button class="btn btn-info">Novo</button>
+            <button class="btn btn-success">Incluir</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Mês</th>
+                    <th scope="col">Ano</th>
+                    <th scope="col">Código do Produto</th>
+                    <th scope="col">Descrição do Produto</th>
+                    <th scope="col">NR Lançamentos</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>mdo</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

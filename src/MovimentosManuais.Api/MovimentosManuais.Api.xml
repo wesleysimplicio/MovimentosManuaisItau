@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MovimentosManuais.Api</name>
+    </assembly>
+    <members>
+        <member name="M:MovimentosManuais.Api.Controllers.ProdutosController.Get">
+            <summary>
+            Get Produtos
+            </summary>
+            <returns>Retorna todos os registros de produtos</returns>
+            <response code="200">Retorna todos os registros</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+    </members>
+</doc>
