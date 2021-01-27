@@ -3,63 +3,65 @@
 }
 
 <h1 class="display-5 mt-5">Movimentos Manuais</h1>
-<div class="row">
-    <div class="col-md-6 col-12">
-        <div class="form-group">
-            <label for="mounth">Mês</label>
-            <input id="mounth" name="mounth" type="text" disabled="disabled" class="form-control" />
+<form id="form" onsubmit="submit()" onreset="reset()">
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="mounth">Mês</label>
+                <input id="mounth" name="mounth" type="text" disabled="disabled" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="year">Ano</label>
+                <input id="year" name="year" type="text" disabled="disabled" class="form-control" />
+            </div>
         </div>
     </div>
-    <div class="col-md-6 col-12">
-        <div class="form-group">
-            <label for="year">Ano</label>
-            <input id="year" name="year" type="text" disabled="disabled" class="form-control" />
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="product">Produto</label>
+                <select id="product" name="product" disabled="disabled" class="form-control">
+                    <option value="">-- Selecione --</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="cosif">Cosif</label>
+                <select id="cosif" name="cosif" disabled="disabled" class="form-control">
+                    <option value="">-- Selecione --</option>
+                </select>
+            </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-6 col-12">
-        <div class="form-group">
-            <label for="product">Produto</label>
-            <select id="product" name="product" disabled="disabled" class="form-control">
-                <option value="">-- Selecione --</option>
-            </select>
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="value">Valor</label>
+                <input id="value" name="value" disabled="disabled" type="text" class="form-control" />
+            </div>
         </div>
     </div>
-    <div class="col-md-6 col-12">
-        <div class="form-group">
-            <label for="cosif">Cosif</label>
-            <select id="cosif" name="cosif" disabled="disabled" class="form-control">
-                <option value="">-- Selecione --</option>
-            </select>
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="description">Descrição</label>
+                <textarea id="description" name="description" disabled="disabled" class="form-control"></textarea>
+            </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-6 col-12">
-        <div class="form-group">
-            <label for="value">Valor</label>
-            <input id="value" name="value" disabled="disabled" type="text" class="form-control" />
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="text-right">
+                <a onClick="reset()" class="btn" id="btnClear">Limpar</a>
+                <a onClick="newForm()" class="btn btn-info" id="btnNew">Novo</a>
+                <a onClick="submit()" class="btn btn-success" id="btnSubmit">Incluir</a>
+            </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-6 col-12">
-        <div class="form-group">
-            <label for="description">Descrição</label>
-            <textarea id="description" name="description" disabled="disabled" class="form-control"></textarea>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6 col-12">
-        <div class="text-right">
-            <button class="btn">Limpar</button>
-            <button class="btn btn-info">Novo</button>
-            <button class="btn btn-success">Incluir</button>
-        </div>
-    </div>
-</div>
+</form>
 
 
 <div class="row mt-4">

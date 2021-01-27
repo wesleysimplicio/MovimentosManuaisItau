@@ -30,6 +30,18 @@ namespace MovimentosManuais.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins("*")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
+
             services.AddScoped<IMovimentoManualService, MovimentoManualService>();
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IProdutoCosifService, ProdutoCosifService>();
