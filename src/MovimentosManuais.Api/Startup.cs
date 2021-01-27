@@ -30,6 +30,7 @@ namespace MovimentosManuais.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IMovimentoManualService, MovimentoManualService>();
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IProdutoCosifService, ProdutoCosifService>();
             services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));

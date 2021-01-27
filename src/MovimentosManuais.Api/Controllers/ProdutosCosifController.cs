@@ -86,7 +86,7 @@ namespace MovimentosManuais.Api.Controllers
         /// <summary>
         /// Post Produtos
         /// </summary>
-        /// <returns>Inserção de produtos na base</returns>
+        /// <returns>Inserção de produtos Cosif na base</returns>
         /// <response code="200">Retorna registro cadastrado</response>
         /// <response code="400">Retorna erro caso não seja o que foi esperado</response>
         [HttpPost]
@@ -136,7 +136,7 @@ namespace MovimentosManuais.Api.Controllers
         /// Delete Produtos
         /// </summary>
         /// <returns>Remoção de produtos Cosif na base</returns>
-        /// <response code="200">Retorna registro removido</response>
+        /// <response code="200">Retorna Ok de registro removido</response>
         /// <response code="400">Retorna erro caso não seja o que foi esperado</response>
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -4,6 +4,46 @@
         <name>MovimentosManuais.Api</name>
     </assembly>
     <members>
+        <member name="M:MovimentosManuais.Api.Controllers.MovimentosManuaisController.Get">
+            <summary>
+            Get movimento manuais
+            </summary>
+            <returns>Retorna todos os registros de movimento manuais</returns>
+            <response code="200">Retorna todos os registros</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.MovimentosManuaisController.GetByCod(System.String)">
+            <summary>
+            Get movimento manuais By Cod
+            </summary>
+            <returns>Busca de movimento manuais por Cod</returns>
+            <response code="200">Retorna os registros de movimentoManual de acordo com Cod</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.MovimentosManuaisController.Post(MovimentosManuais.ApplicationCore.Entity.Movimento_Manual)">
+            <summary>
+            Post movimento manuais
+            </summary>
+            <returns>Inserção de movimento manuais na base</returns>
+            <response code="200">Retorna registro cadastrado</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.MovimentosManuaisController.Put(MovimentosManuais.ApplicationCore.Entity.Movimento_Manual)">
+            <summary>
+            Put movimento manuais
+            </summary>
+            <returns>Atualização de movimento manuais na base</returns>
+            <response code="200">Retorna registro atualizado</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.MovimentosManuaisController.Delete(MovimentosManuais.ApplicationCore.Entity.Movimento_Manual)">
+            <summary>
+            Delete movimento manuais
+            </summary>
+            <returns>Remoção de movimento manuais na base</returns>
+            <response code="200">Retorna registro removido</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
         <member name="M:MovimentosManuais.Api.Controllers.ProdutosController.Get">
             <summary>
             Get Produtos
@@ -64,7 +104,7 @@
             <summary>
             Post Produtos
             </summary>
-            <returns>Inserção de produtos na base</returns>
+            <returns>Inserção de produtos Cosif na base</returns>
             <response code="200">Retorna registro cadastrado</response>
             <response code="400">Retorna erro caso não seja o que foi esperado</response>
         </member>
@@ -81,7 +121,7 @@
             Delete Produtos
             </summary>
             <returns>Remoção de produtos Cosif na base</returns>
-            <response code="200">Retorna registro removido</response>
+            <response code="200">Retorna Ok de registro removido</response>
             <response code="400">Retorna erro caso não seja o que foi esperado</response>
         </member>
     </members>
