@@ -31,6 +31,7 @@ namespace MovimentosManuais.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IProdutoService, ProdutoService>();
+            services.AddScoped<IProdutoCosifService, ProdutoCosifService>();
             services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -62,11 +63,24 @@ namespace MovimentosManuais.Api
 
                 c.IncludeXmlComments(caminhoXmlDoc);
             });
+
+            services.AddMvcCore(options =>
+                 {
+                     options.RequireHttpsPermanent = true; // does not affect api requests
+                     options.RespectBrowserAcceptHeader = true; // false by default
+                 })
+                //.AddApiExplorer()
+                //.AddAuthorization()
+                .AddFormatterMappings()
+                //.AddCacheTagHelper()
+                //.AddDataAnnotations()
+                //.AddCors()
+                .AddJsonFormatters(); // JSON, or you can build your own custom one (above)
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            
+
             LogManager.LoadConfiguration("nlog.config");
 
             if (env.IsDevelopment())

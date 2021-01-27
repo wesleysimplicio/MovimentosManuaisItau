@@ -11,6 +11,9 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
         {
             builder.HasKey(c => c.COD_PRODUTO);
 
+            builder.Property(e => e.COD_PRODUTO)
+                   .HasColumnType("CHAR(4)");
+
             builder.HasKey(c => c.COD_COSIF);
 
             builder.Property(e => e.COD_COSIF)

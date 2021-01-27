@@ -9,7 +9,10 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
-            builder.HasKey(c => c.COD_PRODUTO);                        
+            builder.HasKey(c => c.COD_PRODUTO);
+
+            builder.Property(e => e.COD_PRODUTO)
+                   .HasColumnType("CHAR(4)");
 
             builder.Property(e => e.DES_PRODUTO)
                    .HasColumnType("VARCHAR(30)")

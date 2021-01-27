@@ -41,6 +41,11 @@ namespace MovimentosManuais.InfraStruture.Repository
             return _dbContext.Set<TEntity>().Find(Id);
         }
 
+        public TEntity ObterCod(string Cod)
+        {
+            return _dbContext.Set<TEntity>().Find(Cod);
+        }
+
         public IEnumerable<TEntity> ObterTodos()
         {
             return _dbContext.Set<TEntity>().AsEnumerable();

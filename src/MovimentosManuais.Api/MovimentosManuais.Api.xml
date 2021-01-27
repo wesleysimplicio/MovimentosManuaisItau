@@ -12,5 +12,77 @@
             <response code="200">Retorna todos os registros</response>
             <response code="400">Retorna erro caso não seja o que foi esperado</response>
         </member>
+        <member name="M:MovimentosManuais.Api.Controllers.ProdutosController.GetByCod(System.String)">
+            <summary>
+            Get Produtos By Cod
+            </summary>
+            <returns>Busca de produtos por Cod</returns>
+            <response code="200">Retorna os registros de produto de acordo com Cod</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.ProdutosController.Post(MovimentosManuais.ApplicationCore.Entity.Produto)">
+            <summary>
+            Post Produtos
+            </summary>
+            <returns>Inserção de produtos na base</returns>
+            <response code="200">Retorna registro cadastrado</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.ProdutosController.Put(MovimentosManuais.ApplicationCore.Entity.Produto)">
+            <summary>
+            Put Produtos
+            </summary>
+            <returns>Atualização de produtos na base</returns>
+            <response code="200">Retorna registro atualizado</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.ProdutosController.Delete(MovimentosManuais.ApplicationCore.Entity.Produto)">
+            <summary>
+            Delete Produtos
+            </summary>
+            <returns>Remoção de produtos na base</returns>
+            <response code="200">Retorna registro removido</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.ProdutosCosifController.Get">
+            <summary>
+            Get Produtos Cosif
+            </summary>
+            <returns>Retorna todos os registros de produtos Cosif</returns>
+            <response code="200">Retorna todos os registros</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.ProdutosCosifController.GetByCod(System.String)">
+            <summary>
+            Get Produtos By Cod
+            </summary>
+            <returns>Busca de produtos Cosif por Cod</returns>
+            <response code="200">Retorna os registros de produto Cosif de acordo com Cod</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.ProdutosCosifController.Post(MovimentosManuais.ApplicationCore.Entity.Produto_Cosif)">
+            <summary>
+            Post Produtos
+            </summary>
+            <returns>Inserção de produtos na base</returns>
+            <response code="200">Retorna registro cadastrado</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.ProdutosCosifController.Put(MovimentosManuais.ApplicationCore.Entity.Produto_Cosif)">
+            <summary>
+            Put Produtos
+            </summary>
+            <returns>Atualização de produtos Cosif na base</returns>
+            <response code="200">Retorna registro atualizado</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
+        <member name="M:MovimentosManuais.Api.Controllers.ProdutosCosifController.Delete(MovimentosManuais.ApplicationCore.Entity.Produto_Cosif)">
+            <summary>
+            Delete Produtos
+            </summary>
+            <returns>Remoção de produtos Cosif na base</returns>
+            <response code="200">Retorna registro removido</response>
+            <response code="400">Retorna erro caso não seja o que foi esperado</response>
+        </member>
     </members>
 </doc>

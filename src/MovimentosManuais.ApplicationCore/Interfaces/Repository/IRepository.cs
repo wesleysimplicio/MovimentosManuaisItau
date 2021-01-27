@@ -10,6 +10,7 @@ namespace MovimentosManuais.ApplicationCore.Interfaces.Repository
         void Atualizar(TEntity entity);
         IEnumerable<TEntity> ObterTodos();
         TEntity ObterId(int Id);
+        TEntity ObterCod(string Cod);
         IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicado);
         void Remover(TEntity entity);
     }

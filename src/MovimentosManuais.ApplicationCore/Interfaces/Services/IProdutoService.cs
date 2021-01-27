@@ -11,6 +11,7 @@ namespace MovimentosManuais.ApplicationCore.Interfaces.Services
         void Atualizar(Produto entity);
         IEnumerable<Produto> ObterTodos();
         Produto ObterId(int Id);
+        Produto ObterCod(string Cod);
         IEnumerable<Produto> Buscar(Expression<Func<Produto, bool>> predicado);
         void Remover(Produto entity);
     }

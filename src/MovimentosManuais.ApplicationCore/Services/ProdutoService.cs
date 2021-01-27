@@ -8,13 +8,17 @@ using System.Text;
 
 namespace MovimentosManuais.ApplicationCore.Services
 {
-    public class ProdutoService: IProdutoService
+    public class ProdutoService : IProdutoService
     {
         private readonly IRepository<Produto> _repository;
+        private readonly IProdutoCosifService _produtoCosifService;
 
-        public ProdutoService(IRepository<Produto> repository)
+
+        public ProdutoService(IProdutoCosifService produtoCosifService,
+            IRepository<Produto> repository)
         {
             _repository = repository;
+            _produtoCosifService = produtoCosifService;
         }
 
         public Produto Adicionar(Produto entity)
@@ -33,13 +37,21 @@ namespace MovimentosManuais.ApplicationCore.Services
         {
             return _repository.ObterId(Id);
         }
+        public Produto ObterCod(string Cod)
+        {
+            return _repository.ObterCod(Cod);
+        }
         public IEnumerable<Produto> Buscar(Expression<Func<Produto, bool>> predicado)
         {
             return _repository.Buscar(predicado);
         }
         public void Remover(Produto entity)
         {
-            _repository.Remover(entity);
+            var produto_cosif = _produtoCosifService.ObterCod(entity.COD_PRODUTO);
+            if (produto_cosif != null) {
+                _produtoCosifService.Remover(produto_cosif);
+                _repository.Remover(entity);
+            }
         }
     }
 }
