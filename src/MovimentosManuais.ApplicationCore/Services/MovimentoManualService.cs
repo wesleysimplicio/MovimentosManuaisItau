@@ -23,6 +23,8 @@ namespace MovimentosManuais.ApplicationCore.Services
 
         public Movimento_Manual Adicionar(Movimento_Manual entity)
         {
+            entity.DAT_MOVIMENTO = DateTime.Now;
+            entity.COD_USUARIO = "1234567890";
             return _repository.Adicionar(entity);
         }
         public void Atualizar(Movimento_Manual entity)

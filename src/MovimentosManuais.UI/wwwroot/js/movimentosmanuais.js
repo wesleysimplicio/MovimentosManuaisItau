@@ -1,6 +1,8 @@
-﻿$(document).ready(async() => {
+﻿$(document).ready(async () => {
     //$("#btn-salvar-produto").click(cadastrarProduto);
     this.get();
+    this.getProducts();
+    this.reset();
 });
 
 const defaultHeaders = {
@@ -8,8 +10,41 @@ const defaultHeaders = {
     "Content-Type": "application/pjson",
 
 };
+
+async function submit() {
+    var valida = this.validar();
+    if (!valida) return;
+
+    var send = {};
+    send.DAT_MES = $('#mounth').val();
+    send.DAT_ANO = $('#year').val();
+    send.COD_COSIF = $('#cosif').val();
+    send.VAL_VALOR = $('#value').val();
+    send.DES_DESCRICAO = $('#description').val();
+    send.COD_PRODUTO = $("#product").val();
+
+    try {
+        const rawResponse = await fetch("http://localhost:1269/MovimentosManuais", {
+            method: "POST",
+            headers: defaultHeaders,
+            body: JSON.stringify(send),
+        });
+        const response = await rawResponse.json();
+        console.log(response);
+        if (response.status !== 200) {
+            throw new Error(response.title);
+            return;
+        }
+        this.reset();
+        location.reload();
+    } catch (err) {
+        alert(err.message || err);
+    }
+}
+
+
 async function get() {
-    const rawResponse = await fetch("http://localhost:1269/produtos", {
+    const rawResponse = await fetch("http://localhost:1269/MovimentosManuais", {
         method: "GET",
         headers: defaultHeaders,
         //body: JSON.stringify({
@@ -19,59 +54,72 @@ async function get() {
         //}),
     });
     const response = await rawResponse.json();
-    console.log(response);
+
+    this.trContent = $("#trContent");
+
+    const toRender = response.map((res) => this.getContent(res));
+    toRender.forEach((content) => this.trContent.append(content));
 }
 
-function submit() {
-    alert('submit');
+function getContent(item) {
+    const { DAT_MES, DAT_ANO, NUM_LANCAMENTO, COD_PRODUTO, DES_DESCRICAO, VAL_VALOR } = item;
+
+    return `<tr>
+                    <td>${DAT_MES}</td>
+                    <td>${DAT_ANO}</td>
+                    <td>${COD_PRODUTO}</td>
+                    <td>${NUM_LANCAMENTO}</td>
+                    <td>${DES_DESCRICAO}</td>
+                    <td>${VAL_VALOR}</td>
+            </tr>
+    `;
 }
 
-function newForm() {
-    this.allDisabledOff();
+
+async function getProducts() {
+    const rawResponse = await fetch("http://localhost:1269/produtos", {
+        method: "GET",
+        headers: defaultHeaders,
+    });
+    const response = await rawResponse.json();
+
+    this.product = $("#product");
+    this.product.html("<option value=''>-- Selecione --</option>");
+
+    const toRender = response.map((res) => this.getProductsValues(res));
+    toRender.forEach((content) => this.product.append(content));
+    this.product.val('');
 }
 
-function reset() {
-    this.allDisabledOn();
-    $('#mounth').val('');
-    $('#year').val('');
-    $('#product').val('');
-    $('#cosif').val('');
-    $('#value').val('');
-    $('#description').val('');
+
+function getProductsValues(item) {
+    const { COD_PRODUTO, DES_PRODUTO } = item;
+
+    return `<option value='${COD_PRODUTO}'>${DES_PRODUTO}</option>  `;
 }
 
-function allDisabledOn() {
-    $('#mounth').attr('disabled', 'disabled');
-    $('#year').attr('disabled', 'disabled');
-    $('#product').attr('disabled', 'disabled');
-    $('#cosif').attr('disabled', 'disabled');
-    $('#value').attr('disabled', 'disabled');
-    $('#description').attr('disabled', 'disabled');
+async function getProductsCosifs(codProduct) {
+    if (codProduct != '') {
+        console.log(codProduct);
+        const rawResponse = await fetch("http://localhost:1269/produtoscosif/" + codProduct, {
+            method: "GET",
+            headers: defaultHeaders,
+        });
+        const response = await rawResponse.json();
 
-    $('#btnClear').attr('disabled', 'disabled');
-    $('#btnClear').addClass('disabled');
+        this.productcosif = $("#cosif");
+        this.productcosif.html("<option value=''>-- Selecione --</option>");
 
-    $('#btnSubmit').attr('disabled', 'disabled');
-    $('#btnSubmit').addClass('disabled');
-
-    $('#btnNew').removeAttr('disabled');
-    $('#btnNew').removeClass('disabled');
+        const toRender = response.map((res) => this.getProductsCosifsValues(res));
+        toRender.forEach((content) => this.productcosif.append(content));
+        this.productcosif.val('');
+    }
 }
 
-function allDisabledOff() {
-    $('#mounth').removeAttr('disabled');
-    $('#year').removeAttr('disabled');
-    $('#product').removeAttr('disabled');
-    $('#cosif').removeAttr('disabled');
-    $('#value').removeAttr('disabled');
-    $('#description').removeAttr('disabled');
 
-    $('#btnNew').attr('disabled', 'disabled');
-    $('#btnNew').addClass('disabled');
+function getProductsCosifsValues(item) {
+    const { COD_COSIF, COD_CLASSIFICACAO } = item;
 
-    $('#btnClear').removeAttr('disabled');
-    $('#btnClear').removeClass('disabled');
-
-    $('#btnSubmit').removeAttr('disabled');
-    $('#btnSubmit').removeClass('disabled');
+    return `<option value='${COD_COSIF}'>${COD_CLASSIFICACAO}</option>  `;
 }
+

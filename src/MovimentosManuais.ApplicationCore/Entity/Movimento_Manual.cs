@@ -19,5 +19,7 @@ namespace MovimentosManuais.ApplicationCore.Entity
         public DateTime DAT_MOVIMENTO { get; set; }
         public string COD_USUARIO { get; set; }
         public decimal VAL_VALOR { get; set; }
+        public Produto PRODUTO { get; set; }
+        public Produto_Cosif PRODUTO_COSIF { get; set; }
     }
 }

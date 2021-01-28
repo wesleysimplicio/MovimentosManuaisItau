@@ -94,7 +94,7 @@
         </member>
         <member name="M:MovimentosManuais.Api.Controllers.ProdutosCosifController.GetByCod(System.String)">
             <summary>
-            Get Produtos By Cod
+            Get Produtos Cosif By Cod
             </summary>
             <returns>Busca de produtos Cosif por Cod</returns>
             <response code="200">Retorna os registros de produto Cosif de acordo com Cod</response>

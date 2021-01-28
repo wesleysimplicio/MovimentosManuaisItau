@@ -12,10 +12,12 @@ using MovimentosManuais.ApplicationCore.Interfaces.Services;
 using MovimentosManuais.ApplicationCore.Services;
 using MovimentosManuais.InfraStruture.Data;
 using MovimentosManuais.InfraStruture.Repository;
+using Newtonsoft.Json.Serialization;
 using NLog;
 using NLog.Extensions.Logging;
 using System;
 using System.IO;
+using System.Text.Json;
 
 namespace MovimentosManuais.Api
 {
@@ -41,6 +43,7 @@ namespace MovimentosManuais.Api
                 });
             });
 
+            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.AddScoped<IMovimentoManualService, MovimentoManualService>();
             services.AddScoped<IProdutoService, ProdutoService>();
@@ -77,18 +80,6 @@ namespace MovimentosManuais.Api
                 c.IncludeXmlComments(caminhoXmlDoc);
             });
 
-            services.AddMvcCore(options =>
-                 {
-                     options.RequireHttpsPermanent = true; // does not affect api requests
-                     options.RespectBrowserAcceptHeader = true; // false by default
-                 })
-                //.AddApiExplorer()
-                //.AddAuthorization()
-                .AddFormatterMappings()
-                //.AddCacheTagHelper()
-                //.AddDataAnnotations()
-                //.AddCors()
-                .AddJsonFormatters(); // JSON, or you can build your own custom one (above)
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

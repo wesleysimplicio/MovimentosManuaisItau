@@ -9,6 +9,7 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Movimento_Manual> builder)
         {
+
             builder.HasKey(c => c.DAT_MES);
 
             builder.Property(e => e.DAT_MES)
@@ -17,7 +18,7 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
             builder.HasKey(c => c.DAT_ANO);
 
             builder.Property(e => e.DAT_ANO)
-                   .HasColumnType("NUMERIC(4,0)");            
+                   .HasColumnType("NUMERIC(4,0)");
 
             builder.HasKey(c => c.NUM_LANCAMENTO);
 
@@ -44,7 +45,12 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
                    .HasColumnType("VARCHAR(15)");
 
             builder.Property(e => e.VAL_VALOR)
-                   .HasColumnType("NUMERIC(18,2)");                   
+                   .HasColumnType("NUMERIC(18,2)");
+
+            builder.HasOne(s => s.PRODUTO).WithMany(g => g.MOVIMENTOS_MANUAIS).HasForeignKey(s => s.COD_PRODUTO);
+
+            builder.HasOne(s => s.PRODUTO_COSIF).WithMany(g => g.MOVIMENTOS_MANUAIS).HasForeignKey(s => s.COD_COSIF);
+
         }
     }
 }

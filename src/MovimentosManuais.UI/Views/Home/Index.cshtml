@@ -8,13 +8,13 @@
         <div class="col-md-6 col-12">
             <div class="form-group">
                 <label for="mounth">Mês</label>
-                <input id="mounth" name="mounth" type="text" disabled="disabled" class="form-control" />
+                <input id="mounth" name="mounth" type="text" maxlength="2" min="0" max="99" step="0.1" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" disabled="disabled" class="form-control" />
             </div>
         </div>
         <div class="col-md-6 col-12">
             <div class="form-group">
                 <label for="year">Ano</label>
-                <input id="year" name="year" type="text" disabled="disabled" class="form-control" />
+                <input id="year" name="year" type="text" maxlength="4" min="0" max="99" step="0.1" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"  disabled="disabled" class="form-control" />
             </div>
         </div>
     </div>
@@ -22,8 +22,7 @@
         <div class="col-md-6 col-12">
             <div class="form-group">
                 <label for="product">Produto</label>
-                <select id="product" name="product" disabled="disabled" class="form-control">
-                    <option value="">-- Selecione --</option>
+                <select id="product" onchange="getProductsCosifs(event.target.value)" name="product" disabled="disabled" class="form-control">
                 </select>
             </div>
         </div>
@@ -31,7 +30,6 @@
             <div class="form-group">
                 <label for="cosif">Cosif</label>
                 <select id="cosif" name="cosif" disabled="disabled" class="form-control">
-                    <option value="">-- Selecione --</option>
                 </select>
             </div>
         </div>
@@ -40,7 +38,7 @@
         <div class="col-md-6 col-12">
             <div class="form-group">
                 <label for="value">Valor</label>
-                <input id="value" name="value" disabled="disabled" type="text" class="form-control" />
+                <input id="value" name="value" disabled="disabled" type="number" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" class="form-control" />
             </div>
         </div>
     </div>
@@ -72,22 +70,12 @@
                     <th scope="col">Mês</th>
                     <th scope="col">Ano</th>
                     <th scope="col">Código do Produto</th>
-                    <th scope="col">Descrição do Produto</th>
                     <th scope="col">NR Lançamentos</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Valor</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>mdo</td>
-                </tr>
+            <tbody id="trContent">
             </tbody>
         </table>
     </div>

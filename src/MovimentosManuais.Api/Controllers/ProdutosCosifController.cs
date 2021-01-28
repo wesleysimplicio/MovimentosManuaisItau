@@ -60,7 +60,7 @@ namespace MovimentosManuais.Api.Controllers
         }
 
         /// <summary>
-        /// Get Produtos By Cod
+        /// Get Produtos Cosif By Cod
         /// </summary>
         /// <returns>Busca de produtos Cosif por Cod</returns>
         /// <response code="200">Retorna os registros de produto Cosif de acordo com Cod</response>
@@ -72,7 +72,7 @@ namespace MovimentosManuais.Api.Controllers
         {
             try
             {
-                var result = _produtoCosifService.ObterCod(code);
+                var result = _produtoCosifService.Buscar(q => q.COD_PRODUTO == code);
                 return Ok(result);
             }
             catch (Exception ex)

@@ -17,7 +17,7 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
             builder.HasKey(c => c.COD_COSIF);
 
             builder.Property(e => e.COD_COSIF)
-                   .HasColumnType("CHAR(11)");                   
+                   .HasColumnType("CHAR(11)");
 
             builder.Property(e => e.COD_CLASSIFICACAO)
                    .HasColumnType("CHAR(6)")
@@ -26,6 +26,10 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
             builder.Property(e => e.STA_STATUS)
                    .HasColumnType("CHAR(1)")
                    .IsRequired();
+
+            builder.HasOne(s => s.PRODUTO)
+            .WithMany(g => g.PRODUTO_COSIFS)
+            .HasForeignKey(s => s.COD_PRODUTO);
         }
     }
 }

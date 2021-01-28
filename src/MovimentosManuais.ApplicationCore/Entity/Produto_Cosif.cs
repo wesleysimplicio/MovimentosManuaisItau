@@ -15,5 +15,7 @@ namespace MovimentosManuais.ApplicationCore.Entity
         public string COD_COSIF { get; set; }
         public string COD_CLASSIFICACAO { get; set; }
         public string STA_STATUS { get; set; }
+        public Produto PRODUTO { get; set; }
+        public ICollection<Movimento_Manual> MOVIMENTOS_MANUAIS { get; set; }
     }
 }

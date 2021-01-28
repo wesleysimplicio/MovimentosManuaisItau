@@ -21,6 +21,7 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
             builder.Property(e => e.STA_STATUS)
                    .HasColumnType("CHAR(1)")
                    .IsRequired();
+
         }
     }
 }
