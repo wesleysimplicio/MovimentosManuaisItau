@@ -7,7 +7,7 @@
 
 const defaultHeaders = {
     Accept: "application/json",
-    "Content-Type": "application/pjson",
+    "Content-Type": "application/json",
 
 };
 
@@ -22,6 +22,9 @@ async function submit() {
     send.VAL_VALOR = parseFloat($('#value').val());
     send.DES_DESCRICAO = $('#description').val();
     send.COD_PRODUTO = $("#product").val();
+    //send.NUM_LANCAMENTO = 01;
+    //send.DAT_MOVIMENTO = '2020-01-28 05:17:12';
+    //send.COD_USUARIO = '1234';
 
     try {
         const rawResponse = await fetch("http://localhost:1269/MovimentosManuais", {
@@ -31,7 +34,7 @@ async function submit() {
         });
         const response = await rawResponse.json();
         console.log(response);
-        if (response.status !== 200) {
+        if (!response.COD_PRODUTO) {
             throw new Error(response.title);
             return;
         }
