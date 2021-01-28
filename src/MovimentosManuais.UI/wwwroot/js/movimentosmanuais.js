@@ -16,10 +16,10 @@ async function submit() {
     if (!valida) return;
 
     var send = {};
-    send.DAT_MES = $('#mounth').val();
-    send.DAT_ANO = $('#year').val();
+    send.DAT_MES = parseInt($('#mounth').val());
+    send.DAT_ANO = parseInt($('#year').val());
     send.COD_COSIF = $('#cosif').val();
-    send.VAL_VALOR = $('#value').val();
+    send.VAL_VALOR = parseFloat($('#value').val());
     send.DES_DESCRICAO = $('#description').val();
     send.COD_PRODUTO = $("#product").val();
 

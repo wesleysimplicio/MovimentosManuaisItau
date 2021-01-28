@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MovimentosManuais.ApplicationCore.Services
 {
@@ -21,11 +22,14 @@ namespace MovimentosManuais.ApplicationCore.Services
             _produtoService = produtoService;
         }
 
-        public Movimento_Manual Adicionar(Movimento_Manual entity)
+        public async Task<Movimento_Manual> Adicionar(Movimento_Manual entity)
         {
             entity.DAT_MOVIMENTO = DateTime.Now;
             entity.COD_USUARIO = "1234567890";
-            return _repository.Adicionar(entity);
+            var rand = new Random();
+            var uid = rand.Next(999, 1000000);
+            entity.NUM_LANCAMENTO = uid;
+            return  _repository.Adicionar(entity);
         }
         public void Atualizar(Movimento_Manual entity)
         {

@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace MovimentosManuais.ApplicationCore.Interfaces.Services
 {
     public interface IMovimentoManualService
     {
-        Movimento_Manual Adicionar(Movimento_Manual entity);
+        Task<Movimento_Manual> Adicionar(Movimento_Manual entity);
         void Atualizar(Movimento_Manual entity);
         IEnumerable<Movimento_Manual> ObterTodos();
         Movimento_Manual ObterId(int Id);
