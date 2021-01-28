@@ -86,7 +86,7 @@ namespace MovimentosManuais.Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Post([FromForm] Movimento_Manual movimentoManual)
+        public async Task<IActionResult> Post([FromBody] Movimento_Manual movimentoManual)
         {
             try
             {
