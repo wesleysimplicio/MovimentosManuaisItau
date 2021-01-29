@@ -10,27 +10,19 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
         public void Configure(EntityTypeBuilder<Movimento_Manual> builder)
         {
 
-            builder.HasKey(c => c.DAT_MES);
+            builder.HasKey(c => new { c.DAT_MES, c.DAT_ANO, c.NUM_LANCAMENTO, c.COD_PRODUTO, c.COD_COSIF });
 
             builder.Property(e => e.DAT_MES)
                    .HasColumnType("NUMERIC(2,0)");
 
-            builder.HasKey(c => c.DAT_ANO);
-
             builder.Property(e => e.DAT_ANO)
                    .HasColumnType("NUMERIC(4,0)");
-
-            builder.HasKey(c => c.NUM_LANCAMENTO);
 
             builder.Property(e => e.NUM_LANCAMENTO)
                    .HasColumnType("NUMERIC(18,0)");
 
-            builder.HasKey(c => c.COD_PRODUTO);
-
             builder.Property(e => e.COD_PRODUTO)
                    .HasColumnType("CHAR(4)");
-
-            builder.HasKey(c => c.COD_COSIF);
 
             builder.Property(e => e.COD_COSIF)
                    .HasColumnType("CHAR(11)");
@@ -47,9 +39,9 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
             builder.Property(e => e.VAL_VALOR)
                    .HasColumnType("NUMERIC(18,2)");
 
-            builder.HasOne(s => s.PRODUTO).WithMany(g => g.MOVIMENTOS_MANUAIS).HasForeignKey(s => s.COD_PRODUTO);
+            //builder.HasOne(s => s.PRODUTO).WithMany(g => g.MOVIMENTOS_MANUAIS).HasForeignKey(s => s.COD_PRODUTO);
 
-            builder.HasOne(s => s.PRODUTO_COSIF).WithMany(g => g.MOVIMENTOS_MANUAIS).HasForeignKey(s => s.COD_COSIF);
+            //builder.HasOne(s => s.PRODUTO_COSIF).WithMany(g => g.MOVIMENTOS_MANUAIS).HasForeignKey(s => s.COD_COSIF);
 
         }
     }

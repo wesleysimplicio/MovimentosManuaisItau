@@ -14,10 +14,12 @@ function validar() {
     $('.text-danger').text('');
 
     if ($('#mounth').val() === '') {
-
         $('#mounth').after("<div id='mounth_error' class='text-danger'>Preencha este campo.</div>");
         $('#mounth').attr('style', 'border:1px solid red;');
         i++;
+    } else if ($('#mounth').val() > 12) {
+        $('#mounth').after("<div id='mounth_error' class='text-danger'>Preencha mês válido.</div>");
+        $('#mounth').attr('style', 'border:1px solid red;');
     } else {
         $('#mounth_error').remove();
         $('#mounth').attr('style', 'border:1px solid #CCC;');

@@ -86,11 +86,11 @@ namespace MovimentosManuais.Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Post([FromBody] Movimento_Manual movimentoManual)
+        public IActionResult Post([FromBody] Movimento_Manual movimentoManual)
         {
             try
             {
-                var result = await _movimentoManualService.Adicionar(movimentoManual);
+                var result = _movimentoManualService.Adicionar(movimentoManual);
                 return Ok(result);
             }
             catch (Exception ex)

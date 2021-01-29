@@ -22,7 +22,7 @@ async function submit() {
     send.VAL_VALOR = parseFloat($('#value').val());
     send.DES_DESCRICAO = $('#description').val();
     send.COD_PRODUTO = $("#product").val();
-    //send.NUM_LANCAMENTO = 01;
+    send.NUM_LANCAMENTO = 01;
     //send.DAT_MOVIMENTO = '2020-01-28 05:17:12';
     //send.COD_USUARIO = '1234';
 

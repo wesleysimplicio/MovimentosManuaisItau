@@ -33,7 +33,7 @@ namespace MovimentosManuais.InfraStruture.Repository
 
         public IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicado)
         {
-            return _dbContext.Set<TEntity>().Where(predicado).AsEnumerable();
+            return _dbContext.Set<TEntity>().Where(predicado).AsEnumerable().ToList();
         }
 
         public TEntity ObterId(int Id)
@@ -48,7 +48,7 @@ namespace MovimentosManuais.InfraStruture.Repository
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            return _dbContext.Set<TEntity>().AsEnumerable();
+            return _dbContext.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)

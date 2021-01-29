@@ -3,6 +3,7 @@ using MovimentosManuais.ApplicationCore.Interfaces.Repository;
 using MovimentosManuais.ApplicationCore.Interfaces.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,14 +23,15 @@ namespace MovimentosManuais.ApplicationCore.Services
             _produtoService = produtoService;
         }
 
-        public async Task<Movimento_Manual> Adicionar(Movimento_Manual entity)
+        public Movimento_Manual Adicionar(Movimento_Manual entity)
         {
             entity.DAT_MOVIMENTO = DateTime.Now;
-            entity.COD_USUARIO = "1234567890";
-            var rand = new Random();
-            var uid = rand.Next(999, 1000000);
-            entity.NUM_LANCAMENTO = uid;
-            return  _repository.Adicionar(entity);
+            entity.COD_USUARIO = "TESTE";
+
+            var buscaUltimoLanc = _repository.Buscar(q => q.DAT_MES == entity.DAT_MES && q.DAT_ANO == entity.DAT_ANO).Count();
+
+            entity.NUM_LANCAMENTO = (buscaUltimoLanc > 0) ? buscaUltimoLanc + 1 : 1;
+            return _repository.Adicionar(entity);
         }
         public void Atualizar(Movimento_Manual entity)
         {
@@ -37,7 +39,7 @@ namespace MovimentosManuais.ApplicationCore.Services
         }
         public IEnumerable<Movimento_Manual> ObterTodos()
         {
-            return _repository.ObterTodos();
+            return _repository.Buscar(e => e.COD_PRODUTO != null).OrderByDescending(e => e.DAT_MOVIMENTO);
         }
         public Movimento_Manual ObterId(int Id)
         {
@@ -54,7 +56,8 @@ namespace MovimentosManuais.ApplicationCore.Services
         public void Remover(Movimento_Manual entity)
         {
             var produto = _produtoService.ObterCod(entity.COD_PRODUTO);
-            if (produto != null) {
+            if (produto != null)
+            {
                 _produtoService.Remover(produto);
                 _repository.Remover(entity);
             }
