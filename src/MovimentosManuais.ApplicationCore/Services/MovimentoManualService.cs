@@ -28,9 +28,9 @@ namespace MovimentosManuais.ApplicationCore.Services
             entity.DAT_MOVIMENTO = DateTime.Now;
             entity.COD_USUARIO = "TESTE";
 
-            var buscaUltimoLanc = _repository.Buscar(q => q.DAT_MES == entity.DAT_MES && q.DAT_ANO == entity.DAT_ANO).Count();
+            var buscaUltimoLanc = _repository.Buscar(q => q.DAT_MES == entity.DAT_MES && q.DAT_ANO == entity.DAT_ANO).OrderByDescending(e=>e.DAT_MOVIMENTO).FirstOrDefault();
 
-            entity.NUM_LANCAMENTO = (buscaUltimoLanc > 0) ? buscaUltimoLanc + 1 : 1;
+            entity.NUM_LANCAMENTO = (buscaUltimoLanc.NUM_LANCAMENTO > 0) ? buscaUltimoLanc.NUM_LANCAMENTO + 1 : 1;
             return _repository.Adicionar(entity);
         }
         public void Atualizar(Movimento_Manual entity)
